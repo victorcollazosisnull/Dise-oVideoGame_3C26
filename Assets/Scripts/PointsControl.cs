@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class PointsControl : MonoBehaviour
 {
+    private SFXController sFXController;
     public int pointValue = 1; 
     public float speed = 5f;
+    private void Awake()
+    {
+        sFXController = FindObjectOfType<SFXController>();
+        if (sFXController == null)
+        {
+            Debug.LogError("SFXController no encontrado en la escena.");
+        }
+    }
 
     private void Update()
     {
@@ -13,10 +22,17 @@ public class PointsControl : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) 
+        if (collision.CompareTag("Player"))
         {
-            GameManager.instance.AddPoints(pointValue); 
-            Destroy(gameObject); 
+            if (sFXController != null)
+            {
+                sFXController.PlayGetCoin();
+            }
+            else
+            {
+                Debug.LogError("SFXController no está inicializado.");
+            }
+            Destroy(gameObject);
         }
         else if (collision.CompareTag("muerte"))
         {

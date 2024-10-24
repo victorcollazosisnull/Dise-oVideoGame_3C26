@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private SFXController sFXController;
     [Header("Movimiento")]
     private Rigidbody2D _rigidbody2D;
     public Vector2 inputMovement;
@@ -34,12 +35,18 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Puntaje")]
     private float playTime = 0f;
+
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _rigidbody2D.gravityScale = 0;
         currentHealth = maxHealth;
         UpdateHealthUI();
+        sFXController = FindObjectOfType<SFXController>();
+        if (sFXController == null)
+        {
+            Debug.LogError("SFXController no encontrado en la escena.");
+        }
     }
 
     private void Update()
@@ -116,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
                 _rigidbody2D.AddForce(new Vector2(horizontalJumpForce, 0), ForceMode2D.Impulse);
             }
         }
+        sFXController.PlayJumpSound();
     }
 
     private void ApplyWallAttraction()
@@ -167,6 +175,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            sFXController.PlayDamageSound(); 
             TakeDamage(1);
             Destroy(collision.gameObject);
         }
@@ -190,11 +199,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Die()
     {
-        Invoke("GameOver", 2f);
+        Invoke("GameOver", 0.5f);
     }
 
     private void GameOver()
     {
+        MusicManager.Instance.StopAllMusic();
+        sFXController.PlayDeathSound();
         SceneManager.LoadScene("GameOver");
     }
 }
