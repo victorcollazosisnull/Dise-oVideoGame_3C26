@@ -616,8 +616,13 @@ Transform:
   m_GameObject: {fileID: 271011821}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 1093.5, y: -29.644, z: 0.076245}
   m_LocalScale: {x: 1.0130298, y: 1.0130298, z: 1.0130298}
+=======
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1406983978}
@@ -736,6 +741,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 8ceeaba92e5a92e48826674ac305cfec, type: 3}
   jumpSound: {fileID: 8300000, guid: fa7e155f84c2b2a46a137627a685445b, type: 3}
   getCoins: {fileID: 8300000, guid: 98c9911433e72c540a93fd490085d717, type: 3}
+<<<<<<< HEAD
   explosion: {fileID: 8300000, guid: 1e99e4b2bbd345f4d933f8d87a88fba5, type: 3}
   tele: {fileID: 8300000, guid: f133be04d5b84b747acae187595ab55f, type: 3}
 --- !u!1 &286812322
@@ -813,6 +819,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286812322}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
 --- !u!1 &313252492
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,8 +926,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
+<<<<<<< HEAD
   timeText: {fileID: 0}
   totalScoreText: {fileID: 0}
+=======
+  coinsText: {fileID: 0}
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
 --- !u!4 &326879980
 Transform:
   m_ObjectHideFlags: 0
@@ -2595,8 +2607,13 @@ Transform:
   m_GameObject: {fileID: 932162461}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: 1093.5, y: -29.644, z: 0.076245}
   m_LocalScale: {x: 1.0130298, y: 1.0130298, z: 1.0130298}
+=======
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1406983978}
@@ -2712,6 +2729,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+<<<<<<< HEAD
 --- !u!1 &965703324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2817,6 +2835,8 @@ MonoBehaviour:
   hiddenPosition: {x: 1537, y: 0, z: 0}
   visiblePosition: {x: 0, y: 0, z: 0}
   smoothTime: 0.3
+=======
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
 --- !u!1 &994688757
 GameObject:
   m_ObjectHideFlags: 0
@@ -3738,6 +3758,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376738967}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 --- !u!1 &1401711008
 GameObject:
   m_ObjectHideFlags: 0
@@ -3872,6 +3893,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401711008}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
 --- !u!1 &1406983976
 GameObject:
   m_ObjectHideFlags: 0

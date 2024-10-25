@@ -8,6 +8,7 @@ public class MenuController : MonoBehaviour
 {
     private MusicManager musicManager;
     private SFXController sFXController;
+<<<<<<< HEAD
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI totalScoreText;
@@ -15,6 +16,14 @@ public class MenuController : MonoBehaviour
     {
         sFXController = FindObjectOfType<SFXController>();
         musicManager = MusicManager.Instance;
+=======
+    public TextMeshProUGUI scoreText; 
+    public TextMeshProUGUI coinsText;
+    private void Awake()
+    {
+        sFXController = FindObjectOfType<SFXController>();
+        musicManager = FindAnyObjectByType<MusicManager>();
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
     }
     public void ShowResults()
     {
@@ -30,6 +39,7 @@ public class MenuController : MonoBehaviour
     public void PlayGame()
     {
         sFXController.PlayClickSound();
+<<<<<<< HEAD
         if (MusicManager.Instance != null)
         {
             MusicManager.Instance.PlayGameplayMusic();
@@ -39,11 +49,19 @@ public class MenuController : MonoBehaviour
             Debug.LogError("MusicManager no está inicializado.");
         }
         SceneManager.LoadScene("SampleScene");
+=======
+        MusicManager.Instance.PlayGameplayMusic();
+        SceneManager.LoadScene("SampleScene"); 
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
     }
     public void QuitGame()
     {
         sFXController.PlayClickSound();
+<<<<<<< HEAD
         Application.Quit();
+=======
+        Application.Quit(); 
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
     }
     public void GoToMenu()
     {
@@ -51,4 +69,16 @@ public class MenuController : MonoBehaviour
         musicManager.PlayMenuMusic();
         SceneManager.LoadScene("Menu");
     }
+<<<<<<< HEAD
 }
+=======
+    public void Retry()
+    {
+        sFXController.PlayClickSound();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+     
+        musicManager.PlayGameplayMusic();
+        SceneManager.LoadScene("SampleScene");
+    }
+}
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa

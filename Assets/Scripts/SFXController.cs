@@ -11,8 +11,11 @@ public class SFXController : MonoBehaviour
     public AudioClip deathSound;
     public AudioClip jumpSound;
     public AudioClip getCoins;
+<<<<<<< HEAD
     public AudioClip explosion;
     public AudioClip tele;
+=======
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
 
     private AudioSource audioSource;
 
@@ -59,9 +62,12 @@ public class SFXController : MonoBehaviour
     {
         audioSource.PlayOneShot(getCoins);
     }
+<<<<<<< HEAD
     public void PlayTeleport()
     {
         audioSource.PlayOneShot(tele);
     }
 
+=======
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
 }

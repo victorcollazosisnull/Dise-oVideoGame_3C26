@@ -12,15 +12,23 @@ public class GameManager : MonoBehaviour
     public int playerScore = 0;
     public TextMeshProUGUI scoreText;
     private int totalCoins = 0;
+<<<<<<< HEAD
     private float survivalTime;
     private bool isGameActive;
+=======
+
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
     private void Awake()
     {
         musicManager = MusicManager.Instance;
         if (instance == null)
         {
             instance = this;
+<<<<<<< HEAD
             DontDestroyOnLoad(gameObject); 
+=======
+            DontDestroyOnLoad(gameObject);
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
         }
         else
         {
@@ -28,6 +36,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     private void Start()
     {
         FindScoreText();
@@ -70,6 +79,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+=======
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
     public void AddPoints(int points)
     {
         playerScore += points;
@@ -78,6 +89,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("agarrando monedas");
     }
 
+<<<<<<< HEAD
     private void UpdateScoreText()
     {
         if (scoreText != null)
@@ -86,6 +98,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+=======
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
     public int GetCurrentCoins()
     {
         return totalCoins;
@@ -95,6 +109,7 @@ public class GameManager : MonoBehaviour
     {
         totalCoins = 0;
     }
+<<<<<<< HEAD
 
     public void RestartGame()
     {
@@ -112,5 +127,10 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("musicManager no está inicializado en RestartGame()");
         }
+=======
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
     }
 }

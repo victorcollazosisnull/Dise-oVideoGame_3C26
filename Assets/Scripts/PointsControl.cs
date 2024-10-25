@@ -27,7 +27,10 @@ public class PointsControl : MonoBehaviour
             if (sFXController != null)
             {
                 sFXController.PlayGetCoin();
+<<<<<<< HEAD
                 GameManager.instance.AddPoints(pointValue);
+=======
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
             }
             else
             {

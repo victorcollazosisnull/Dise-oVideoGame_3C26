@@ -36,7 +36,11 @@ public class OptionsMenuController : MonoBehaviour
     }
     public void ToggleOptions()
     {
+<<<<<<< HEAD
         sFXController.PlayClickSound(); 
+=======
+        sFXController.PlayClickSound();
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
         isOptionsVisible = !isOptionsVisible;
     }
 }

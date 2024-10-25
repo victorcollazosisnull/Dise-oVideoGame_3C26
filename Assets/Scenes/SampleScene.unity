@@ -123,6 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &427167831
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +273,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427167831}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1592,8 +1595,13 @@ MonoBehaviour:
     m_Bits: 1
   groundCheck: {fileID: 1250662649}
   groundCheckRadius: 0.2
+<<<<<<< HEAD
   maxHealth: 10
   textvida: {fileID: 1604808865}
+=======
+  maxHealth: 5
+  healthText: {fileID: 607388318}
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
 --- !u!61 &1506863044
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2631,6 +2639,9 @@ SceneRoots:
   - {fileID: 1349937318}
   - {fileID: 1956312322}
   - {fileID: 1028052351}
+<<<<<<< HEAD
   - {fileID: 1980375153}
   - {fileID: 2046666931}
   - {fileID: 1591999352}
+=======
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa

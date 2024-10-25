@@ -31,9 +31,15 @@ public class AudioManager : MonoBehaviour
         musicSlider.onValueChanged.AddListener(SetMusicVolume);
         sfxSlider.onValueChanged.AddListener(SetSFXVolume);
 
+<<<<<<< HEAD
         masterSlider.value = 0.60f;
         musicSlider.value = 0.60f; 
         sfxSlider.value = 0.60f;  
+=======
+        masterSlider.value = 1f;
+        musicSlider.value = 1f; 
+        sfxSlider.value = 1f;  
+>>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
     }
 
     public void SetMasterVolume(float volume)
