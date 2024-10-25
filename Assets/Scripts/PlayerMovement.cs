@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private SFXController sFXController;
+    private SpriteRenderer spriteRenderer;
     [Header("Movimiento")]
     private Rigidbody2D _rigidbody2D;
     public Vector2 inputMovement;
@@ -30,16 +32,28 @@ public class PlayerMovement : MonoBehaviour
     [Header("Vida y Daño")]
     public int maxHealth = 5;
     private int currentHealth;
-    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI textvida;
 
     [Header("Puntaje")]
     private float playTime = 0f;
+
+    private Pausa pausaController; 
+
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody2D.gravityScale = 0;
         currentHealth = maxHealth;
         UpdateHealthUI();
+        sFXController = FindObjectOfType<SFXController>();
+        pausaController = FindObjectOfType<Pausa>(); 
+
+        if (sFXController == null)
+        {
+            Debug.LogError("SFXController no encontrado en la escena.");
+        }
+        spriteRenderer.flipX = true;
     }
 
     private void Update()
@@ -66,9 +80,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void Teleport()
     {
+        if (pausaController.IsPaused()) 
+        {
+            return; 
+        }
+
         Vector2 targetPosition = new Vector2(-transform.position.x, transform.position.y);
+        
         transform.position = targetPosition;
+        sFXController.PlayTeleport();
         isOnLeftSide = !isOnLeftSide;
+        if (isOnLeftSide)
+        {
+            spriteRenderer.flipX = true;  
+            spriteRenderer.flipY = verticalInput < 0; 
+        }
+        else
+        {
+            spriteRenderer.flipX = false; 
+            spriteRenderer.flipY = verticalInput < 0; 
+        }
     }
 
     private void Move(float direction)
@@ -80,10 +111,32 @@ public class PlayerMovement : MonoBehaviour
             if (direction > 0)
             {
                 moveDirection = Vector3.up;
+
+                if (isOnLeftSide)
+                {
+                    spriteRenderer.flipX = true;
+                    spriteRenderer.flipY = false;
+                }
+                else
+                {
+                    spriteRenderer.flipX = false;
+                    spriteRenderer.flipY = false;
+                }
             }
             else
             {
                 moveDirection = Vector3.down;
+
+                if (isOnLeftSide)
+                {
+                    spriteRenderer.flipX = true;
+                    spriteRenderer.flipY = true;
+                }
+                else
+                {
+                    spriteRenderer.flipX = false;
+                    spriteRenderer.flipY = true;
+                }
             }
 
             playerTransform.position += moveDirection * verticalSpeed * Time.fixedDeltaTime;
@@ -116,6 +169,7 @@ public class PlayerMovement : MonoBehaviour
                 _rigidbody2D.AddForce(new Vector2(horizontalJumpForce, 0), ForceMode2D.Impulse);
             }
         }
+        sFXController.PlayJumpSound();
     }
 
     private void ApplyWallAttraction()
@@ -140,7 +194,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void ReadTeleport(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !pausaController.IsPaused())
         {
             Teleport();
         }
@@ -167,6 +221,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            sFXController.PlayDamageSound();
             TakeDamage(1);
             Destroy(collision.gameObject);
         }
@@ -176,25 +231,25 @@ public class PlayerMovement : MonoBehaviour
     {
         currentHealth -= damage;
         UpdateHealthUI();
-
         if (currentHealth <= 0)
         {
             Die();
         }
     }
-
     private void UpdateHealthUI()
     {
-        healthText.text = "VIDA: " + currentHealth.ToString();
+        textvida.text = "LIFE: " + currentHealth.ToString(); 
     }
 
     private void Die()
     {
-        Invoke("GameOver", 2f);
+        Invoke("GameOver", 0.1f);
     }
 
     private void GameOver()
     {
+        MusicManager.Instance.StopAllMusic();
+        sFXController.PlayDeathSound();
         SceneManager.LoadScene("GameOver");
     }
 }

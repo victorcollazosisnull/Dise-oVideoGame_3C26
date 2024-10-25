@@ -6,28 +6,49 @@ using TMPro;
 
 public class MenuController : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText; 
-    public TextMeshProUGUI coinsText; 
-
+    private MusicManager musicManager;
+    private SFXController sFXController;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timeText;
+    public TextMeshProUGUI totalScoreText;
+    private void Awake()
+    {
+        sFXController = FindObjectOfType<SFXController>();
+        musicManager = MusicManager.Instance;
+    }
     public void ShowResults()
     {
-        scoreText.text = "TIEMPO: ";
-        coinsText.text = "MONEDAS: "; 
+        float survivalTime = GameManager.instance.GetSurvivalTime();
+        int coinsCollected = GameManager.instance.GetCurrentCoins();
+
+        int totalScore = coinsCollected + (int)survivalTime;
+
+        scoreText.text = "POINTS: " + coinsCollected.ToString();
+        timeText.text = "TIME: " + Mathf.FloorToInt(survivalTime).ToString() + "s"; 
+        totalScoreText.text = "RESULT: " + totalScore.ToString();
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene("SampleScene"); 
+        sFXController.PlayClickSound();
+        if (MusicManager.Instance != null)
+        {
+            MusicManager.Instance.PlayGameplayMusic();
+        }
+        else
+        {
+            Debug.LogError("MusicManager no está inicializado.");
+        }
+        SceneManager.LoadScene("SampleScene");
     }
     public void QuitGame()
     {
-        Application.Quit(); 
+        sFXController.PlayClickSound();
+        Application.Quit();
     }
     public void GoToMenu()
     {
+        sFXController.PlayClickSound();
+        musicManager.PlayMenuMusic();
         SceneManager.LoadScene("Menu");
-    }
-    public void Retry()
-    {
-        SceneManager.LoadScene("SampleScene");
     }
 }

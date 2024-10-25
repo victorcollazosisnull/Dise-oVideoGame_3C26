@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: a9b26eb53f2f19b419ae961bd5fdaef4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - sfxAudioMixerGroup: {instanceID: 0}
+  - clickSound: {instanceID: 0}
+  - damageSound: {instanceID: 0}
+  - deathSound: {instanceID: 0}
+  - jumpSound: {instanceID: 0}
+  - getCoins: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
