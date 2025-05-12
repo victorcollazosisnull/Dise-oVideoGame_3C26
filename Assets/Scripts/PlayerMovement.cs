@@ -8,10 +8,8 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     private SFXController sFXController;
-<<<<<<< HEAD
     private SpriteRenderer spriteRenderer;
-=======
->>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
+
     [Header("Movimiento")]
     private Rigidbody2D _rigidbody2D;
     public Vector2 inputMovement;
@@ -40,11 +38,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Puntaje")]
     private float playTime = 0f;
 
-<<<<<<< HEAD
     private Pausa pausaController; 
 
-=======
->>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -53,19 +48,15 @@ public class PlayerMovement : MonoBehaviour
         currentHealth = maxHealth;
         UpdateHealthUI();
         sFXController = FindObjectOfType<SFXController>();
-<<<<<<< HEAD
+
         pausaController = FindObjectOfType<Pausa>(); 
 
-=======
->>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
         if (sFXController == null)
         {
             Debug.LogError("SFXController no encontrado en la escena.");
         }
-<<<<<<< HEAD
         spriteRenderer.flipX = true;
-=======
->>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
+
     }
 
     private void Update()
@@ -233,11 +224,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-<<<<<<< HEAD
             sFXController.PlayDamageSound();
-=======
+
             sFXController.PlayDamageSound(); 
->>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
+
             TakeDamage(1);
             Destroy(collision.gameObject);
         }
@@ -259,11 +249,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Die()
     {
-<<<<<<< HEAD
+
         Invoke("GameOver", 0.1f);
-=======
+
         Invoke("GameOver", 0.5f);
->>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
+
     }
 
     private void GameOver()

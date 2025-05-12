@@ -8,23 +8,18 @@ public class MenuController : MonoBehaviour
 {
     private MusicManager musicManager;
     private SFXController sFXController;
-<<<<<<< HEAD
+
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI totalScoreText;
+    public TextMeshProUGUI coinsText; 
+
     private void Awake()
     {
         sFXController = FindObjectOfType<SFXController>();
-        musicManager = MusicManager.Instance;
-=======
-    public TextMeshProUGUI scoreText; 
-    public TextMeshProUGUI coinsText;
-    private void Awake()
-    {
-        sFXController = FindObjectOfType<SFXController>();
-        musicManager = FindAnyObjectByType<MusicManager>();
->>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
+        musicManager = MusicManager.Instance != null ? MusicManager.Instance : FindAnyObjectByType<MusicManager>();
     }
+
     public void ShowResults()
     {
         float survivalTime = GameManager.instance.GetSurvivalTime();
@@ -33,52 +28,53 @@ public class MenuController : MonoBehaviour
         int totalScore = coinsCollected + (int)survivalTime;
 
         scoreText.text = "POINTS: " + coinsCollected.ToString();
-        timeText.text = "TIME: " + Mathf.FloorToInt(survivalTime).ToString() + "s"; 
+        timeText.text = "TIME: " + Mathf.FloorToInt(survivalTime).ToString() + "s";
         totalScoreText.text = "RESULT: " + totalScore.ToString();
     }
+
     public void PlayGame()
     {
         sFXController.PlayClickSound();
-<<<<<<< HEAD
-        if (MusicManager.Instance != null)
+
+        if (musicManager != null)
         {
-            MusicManager.Instance.PlayGameplayMusic();
+            musicManager.PlayGameplayMusic();
         }
         else
         {
             Debug.LogError("MusicManager no está inicializado.");
         }
+
         SceneManager.LoadScene("SampleScene");
-=======
-        MusicManager.Instance.PlayGameplayMusic();
-        SceneManager.LoadScene("SampleScene"); 
->>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
     }
-    public void QuitGame()
-    {
-        sFXController.PlayClickSound();
-<<<<<<< HEAD
-        Application.Quit();
-=======
-        Application.Quit(); 
->>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
-    }
-    public void GoToMenu()
-    {
-        sFXController.PlayClickSound();
-        musicManager.PlayMenuMusic();
-        SceneManager.LoadScene("Menu");
-    }
-<<<<<<< HEAD
-}
-=======
+
     public void Retry()
     {
         sFXController.PlayClickSound();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-     
-        musicManager.PlayGameplayMusic();
+
+        if (musicManager != null)
+        {
+            musicManager.PlayGameplayMusic();
+        }
+
         SceneManager.LoadScene("SampleScene");
     }
+
+    public void QuitGame()
+    {
+        sFXController.PlayClickSound();
+        Application.Quit();
+    }
+
+    public void GoToMenu()
+    {
+        sFXController.PlayClickSound();
+
+        if (musicManager != null)
+        {
+            musicManager.PlayMenuMusic();
+        }
+
+        SceneManager.LoadScene("Menu");
+    }
 }
->>>>>>> fde198a38e86cf3e7b0bbaa9dd79e820967916fa
