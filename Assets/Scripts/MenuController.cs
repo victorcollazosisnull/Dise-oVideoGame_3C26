@@ -12,7 +12,7 @@ public class MenuController : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI totalScoreText;
-    public TextMeshProUGUI coinsText; 
+    public TextMeshProUGUI coinsText; // Si vas a usarlo más adelante
 
     private void Awake()
     {

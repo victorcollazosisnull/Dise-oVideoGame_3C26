@@ -14,26 +14,19 @@ public class GameManager : MonoBehaviour
     private int totalCoins = 0;
     private float survivalTime;
     private bool isGameActive;
-    private bool resetOnNextSceneLoad = false;
+
     private void Awake()
     {
         musicManager = MusicManager.Instance;
-
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            SceneManager.sceneLoaded += OnSceneLoaded; // escuchar recarga de escena
         }
         else
         {
             Destroy(gameObject);
         }
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded; // evitar fugas de memoria
     }
 
     private void Start()
@@ -42,12 +35,10 @@ public class GameManager : MonoBehaviour
         isGameActive = true;
         StartCoroutine(Timer());
     }
-
     private void Update()
     {
         survivalTime += Time.deltaTime;
     }
-
     private IEnumerator Timer()
     {
         while (isGameActive)
@@ -67,22 +58,11 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnEnable()
     {
         FindScoreText();
-
-        if (resetOnNextSceneLoad)
-        {
-            playerScore = 0;
-            totalCoins = 0;
-            survivalTime = 0;
-            isGameActive = true;
-            resetOnNextSceneLoad = false;
-        }
-
-        UpdateScoreText();
-        StartCoroutine(Timer());
     }
+
     private void FindScoreText()
     {
         scoreText = FindObjectOfType<TextMeshProUGUI>();
@@ -124,6 +104,14 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        playerScore = 0;
+        totalCoins = 0;
+        ResetCoins();
+        UpdateScoreText();
+        survivalTime = 0;
+        isGameActive = true;
+        StartCoroutine(Timer());
+
         if (musicManager != null)
         {
             musicManager.PlayGameplayMusic();
@@ -133,7 +121,6 @@ public class GameManager : MonoBehaviour
             Debug.LogError("musicManager no está inicializado en RestartGame()");
         }
 
-        resetOnNextSceneLoad = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
